@@ -53,7 +53,7 @@ function DropdownMenu() {
 
   function DropdownItem(props) {
     return (
-      <a href={props.onSocial} className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
+      <a href={props.link} className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
         <span className="icon-button">{props.leftIcon}</span>
         {props.children}
         <span className="icon-right">{props.rightIcon}</span>
@@ -71,10 +71,6 @@ function DropdownMenu() {
     return (
       <h2>{props.children}</h2>
     );
-  }
-
-  function social(props) {
-    props.facebookClick = window.open('https://www.facebook.com/');
   }
 
   return (
@@ -130,22 +126,25 @@ function DropdownMenu() {
           </DropdownItem>
           <DropdownItem
             leftIcon={<facebookIcon />}
-            onSocial={social.facebookClick}
+            link={'https://www.facebook.com/ChideraSIke'}
           >
             <DropdownSubTitle>Facebook</DropdownSubTitle>
           </DropdownItem>
           <DropdownItem
             leftIcon={<twitterIcon />}
+            link={'https://www.twitter.com/chidera_si'}
           >
             <DropdownSubTitle>Twitter</DropdownSubTitle>
           </DropdownItem>
           <DropdownItem
             leftIcon={<instagramIcon />}
+            link={'https://www.instagram.com/chidera_si'}
           >
             <DropdownSubTitle>Instagram</DropdownSubTitle>
           </DropdownItem>
           <DropdownItem
             leftIcon={<youtubeIcon />}
+            link={'https://www.youtube.com/channel/UCSkwxsaDMuz1crikMQBbPoQ'}
           >
             <DropdownSubTitle>YouTube</DropdownSubTitle>
           </DropdownItem>
@@ -156,11 +155,13 @@ function DropdownMenu() {
           </DropdownItem>
           <DropdownItem
             leftIcon={<snapchatIcon />}
+            link={'https://www.snapchat.com/chidera_si'}
           >
             <DropdownSubTitle>Snapchat</DropdownSubTitle>
           </DropdownItem>
           <DropdownItem
             leftIcon={<linkedinIcon />}
+            link={'https://www.linkedin.com/in/chideraike'}
           >
             <DropdownSubTitle>LinkedIn</DropdownSubTitle>
           </DropdownItem>
@@ -180,14 +181,18 @@ function DropdownMenu() {
               Settings & Privacy
             </DropdownTitle>
           </DropdownItem>
-          <DropdownItem>
+          <DropdownItem
+          link={'https://github.com/chideraike/facebook-web-clone'}
+          >
             <DropdownSubTitle>Get the code</DropdownSubTitle>
           </DropdownItem>
           <DropdownItem>
-            <DropdownSubTitle>Settings</DropdownSubTitle>
+            <DropdownSubTitle>Thanks for checking this out</DropdownSubTitle>
           </DropdownItem>
-          <DropdownItem>
-            <DropdownSubTitle>Settings</DropdownSubTitle>
+          <DropdownItem
+          link={'/'}
+          >
+            <DropdownSubTitle>Log Out</DropdownSubTitle>
           </DropdownItem>
         </div>
       </CSSTransition>
