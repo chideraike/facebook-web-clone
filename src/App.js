@@ -8,6 +8,7 @@ import { ReactComponent as CogIcon } from './icons/cog.svg';
 import { ReactComponent as ChevronIcon } from './icons/chevron.svg';
 import { ReactComponent as ArrowIcon } from './icons/arrow.svg';
 import { ReactComponent as BoltIcon } from './icons/bolt.svg';
+import { ReactComponent as MoonIcon } from './icons/moon.svg';
 
 import { ReactComponent as ProfileIcon } from './icons/profile.svg';
 
@@ -102,6 +103,7 @@ function DropdownMenu() {
             </DropdownSubTitle>
           </DropdownItem>
           <DropdownItem
+            leftIcon={<MoonIcon />}
             rightIcon={<DarkModeToggle />}
           >
             <DropdownSubTitle>
