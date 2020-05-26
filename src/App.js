@@ -11,7 +11,6 @@ import { ReactComponent as BoltIcon } from './icons/bolt.svg';
 
 import { ReactComponent as ProfileIcon } from './icons/profile.svg';
 
-import './index.css';
 import { CSSTransition } from 'react-transition-group';
 import {
   facebookIcon,
@@ -22,6 +21,9 @@ import {
   snapchatIcon,
   linkedinIcon
 } from './socials';
+
+import DarkModeToggle from "./darkmode/DarkModeToggle";
+
 
 function App() {
   return (
@@ -97,6 +99,13 @@ function DropdownMenu() {
           >
             <DropdownSubTitle>
               Network
+            </DropdownSubTitle>
+          </DropdownItem>
+          <DropdownItem
+            rightIcon={<DarkModeToggle />}
+          >
+            <DropdownSubTitle>
+              Dark Mode
             </DropdownSubTitle>
           </DropdownItem>
           <DropdownItem
@@ -182,7 +191,7 @@ function DropdownMenu() {
             </DropdownTitle>
           </DropdownItem>
           <DropdownItem
-          link={'https://github.com/chideraike/facebook-web-clone'}
+            link={'https://github.com/chideraike/facebook-web-clone'}
           >
             <DropdownSubTitle>Get the code</DropdownSubTitle>
           </DropdownItem>
@@ -190,7 +199,7 @@ function DropdownMenu() {
             <DropdownSubTitle>Thanks for checking this out</DropdownSubTitle>
           </DropdownItem>
           <DropdownItem
-          link={'/'}
+            link={'/'}
           >
             <DropdownSubTitle>Log Out</DropdownSubTitle>
           </DropdownItem>

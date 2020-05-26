@@ -1,6 +1,6 @@
+html,
 body {
   margin: 0;
-  background: #151616;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -14,14 +14,133 @@ code {
 }
 
 :root {
-  --bg: #242526;
+  --bg: #f0f2f5;
+  --bg-dark: #242526;
+  --bg-dark-color: #151616;
   --bg-accent: #484a4d;
   --text-color: #dadce1;
+  --text-color-dark: #2f3031;
   --nav-size: 60px;
   --border: 1px solid #474a4d;
   --border-radius: 8px;
   --speed: 500ms;
 }
+
+/* Dark Mode Implementation */
+body.light-mode {
+  background-color: #f0f2f5;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: var(--bg-dark-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease;
+
+  .navbar {
+    background-color: var(--bg-dark);
+  }
+
+  .dark-mode-toggle>button {
+    color: #999;
+
+    &:last-child {
+      color: lightblue;
+    }
+  }
+
+  a {
+    color: var(--text-color);
+  }
+
+  .icon-button {
+    background-color: var(--bg-accent);
+  }
+
+  .icon-button svg {
+    fill: var(--text-color);
+  }
+
+  .icon-button:hover {
+    filter: brightness(1.2);
+  }
+
+  .dropdown {
+    background-color: var(--bg-dark);
+  }
+
+  .menu-item:hover {
+    background-color: #525357;
+  }
+}
+
+.dark-mode-toggle {
+  display: flex;
+  margin: 0 auto;
+
+  &>button {
+    font-size: 1.2em;
+    background: none;
+    border: none;
+    color: #ffe600;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:last-child {
+      color: #666;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.toggle-control {
+  position: relative;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+}
+
+input[type='checkbox'].dmcheck {
+  width: 40px;
+  height: 10px;
+  background: #555;
+  position: relative;
+  border-radius: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  vertical-align: 2px;
+  outline: none;
+
+  &:checked+label {
+    left: 30px;
+  }
+
+  &:focus-visible {
+    outline: solid 2px white;
+  }
+
+  &+label {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: absolute;
+    left: 2px;
+    background: #fff;
+    opacity: 0.9;
+    background-color: #f6f6f6;
+  }
+}
+
+// --------------------
 
 ul {
   list-style: none;
@@ -30,7 +149,7 @@ ul {
 }
 
 a {
-  color: var(--text-color);
+  color: var(--text-color-dark);
   text-decoration: none;
 }
 
@@ -39,7 +158,7 @@ a {
 /* <nav> */
 .navbar {
   height: var(--nav-size);
-  background-color: var(--bg);
+  background-color: #fff;
   padding: 0 1rem;
   border-bottom: var(--border);
 }
@@ -65,7 +184,7 @@ a {
   --button-size: calc(var(--nav-size) * 0.5);
   width: var(--button-size);
   height: var(--button-size);
-  background-color: #484a4d;
+  background-color: var(--bg);
   border-radius: 50%;
   padding: 5px;
   margin: 2px;
@@ -76,11 +195,11 @@ a {
 }
 
 .icon-button:hover {
-  filter: brightness(1.2);
+  filter: invert(1.2);
 }
 
 .icon-button svg {
-  fill: var(--text-color);
+  fill: var(--text-color-dark);
   width: 20px;
   height: 20px;
 }
@@ -91,7 +210,7 @@ a {
   top: 58px;
   width: 300px;
   transform: translateX(-45%);
-  background-color: var(--bg);
+  background-color: #fff;
   border: var(--border);
   border-radius: var(--border-radius);
   padding: 1rem;
@@ -111,13 +230,15 @@ a {
   transition: background var(--speed);
   padding: 0.5rem;
 }
+
 .menu-item:hover {
-  background-color: #525357;
+  background-color: #c1c3cc;
 }
 
 .menu-item .icon-button {
   margin-right: 0.5rem;
 }
+
 .menu-item .icon-button:hover {
   filter: none;
 }
@@ -131,6 +252,7 @@ a {
   position: absolute;
   transform: translateX(-110%);
 }
+
 .menu-primary-enter-active {
   transform: translateX(0%);
   transition: all var(--speed) ease;
@@ -139,6 +261,7 @@ a {
 .menu-primary-exit {
   position: absolute;
 }
+
 .menu-primary-exit-active {
   transform: translateX(-110%);
   transition: all var(--speed) ease;
@@ -147,13 +270,14 @@ a {
 .menu-secondary-enter {
   transform: translateX(110%);
 }
+
 .menu-secondary-enter-active {
   transform: translateX(0%);
   transition: all var(--speed) ease;
 }
 
-.menu-secondary-exit {
-}
+.menu-secondary-exit {}
+
 .menu-secondary-exit-active {
   transform: translateX(110%);
   transition: all var(--speed) ease;
