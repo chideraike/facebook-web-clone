@@ -24,7 +24,7 @@ import {
 } from './socials';
 
 import DarkModeToggle from "./darkmode/DarkModeToggle";
-
+import OutsideClick from './hooks/OutsideClick';
 
 function App() {
   return (
@@ -220,11 +220,15 @@ function Navbar(props) {
 }
 
 function NavItem(props) {
-  const [open, setOpen] = useState(false);
+  const { open, setOpen, ref } = OutsideClick(false);
+
+  const handleOpen = () => {
+    setOpen((open) => !open)
+  }
 
   return (
-    <li className="nav-item">
-      <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
+    <li className="nav-item" ref={ref}>
+      <a href="#" className="icon-button" onClick={handleOpen}>
         {props.icon}
       </a>
       {open && props.children}
